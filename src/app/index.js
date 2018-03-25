@@ -4,16 +4,6 @@ import { render } from 'react-dom';
 import './index.styl';
 import Beercard from './components/Beercard';
 
-// let tapsdata = {};
-
-// fetch('./app/data.json')
-// 	.then(response => response.json())
-// 	.then(function(data) {
-// 		Object.assign(tapsdata, data)
-// 	})
-
-// console.log(tapsdata);
-
 class App extends Component {
 	constructor(props) {
 		super(props);
