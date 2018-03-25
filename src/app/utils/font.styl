@@ -1,0 +1,11 @@
+/* Font */
+font-face($name, $type, $weight, $style)
+	@font-face
+		font-family $name
+		src url("../../assets/fonts/"+$name+"/"+$type+".woff2") format('woff2'), url("../../assets/fonts/"+$name+"/"+$type+".woff")
+		font-weight $weight
+		font-style $style
+
+font-face("suisse", "regular", 400, normal)
+font-face("suisse", "medium", 500, normal)
+font-face("suisse", "semibold", 600, normal)

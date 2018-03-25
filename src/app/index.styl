@@ -1,0 +1,22 @@
+@import './utils/reset.styl';
+// @import './utils/font.styl';
+
+/* Custom */
+:root
+	--color-white #FFFFFF
+	--color-black #041128
+	--color-gray-n10 #EBECF0
+	--color-gray-n20 #DFE1E6
+	--color-gray-n30 #B3BAC5
+
+/* App */
+.container
+	display grid
+	grid-template-columns repeat(5, 1fr)
+	grid-template-rows repeat(4, 1fr)
+	grid-column-gap 1em
+	grid-row-gap 1em
+	width 100vw
+	height 100vh
+	padding 2em
+	background-color var(--color-gray-n30)
