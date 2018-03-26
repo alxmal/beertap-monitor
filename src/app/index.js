@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-// import data from './data.json';
 import './index.styl';
 import Beercard from './components/Beercard';
 
@@ -21,7 +20,6 @@ class App extends Component {
 
 	render() {
 		const { tapsdata } = this.state;
-
 		return (
 			<div className="container">
 				{Object.keys(tapsdata).map(tap => <Beercard key={tap} data={tapsdata[tap]}/>)}
