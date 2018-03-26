@@ -12,7 +12,7 @@ class App extends Component {
 		};
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		fetch('./app/data.json')
 			.then(response => response.json())
 			.then(data => this.setState({tapsdata: data}));
@@ -22,7 +22,7 @@ class App extends Component {
 		const { tapsdata } = this.state;
 		return (
 			<div className="container">
-				{Object.keys(tapsdata).map(tap => <Beercard key={tap} data={tapsdata[tap]}/>)}
+				{Object.keys(tapsdata).map(tap => <Beercard key={tap} tapNum={tap} data={tapsdata[tap]}/>)}
 			</div>
 		);
 	}

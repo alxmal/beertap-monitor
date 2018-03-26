@@ -6,7 +6,7 @@ function Beercard(props) {
 		<div className="beer-card">
 			<div className="prod">
 				<p className="brewery">{props.data.brewery}</p>
-				<h1 className="name">{props.data.name}</h1>
+				<p className="name">{props.tapNum + ' / ' + props.data.name}</p>
 			</div>
 			<p className="sort">{props.data.sort}</p>
 			<div className="stats">
