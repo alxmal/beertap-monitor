@@ -1,0 +1,52 @@
+.inventory
+	display flex
+	flex-flow column nowrap
+	background-color var(--color-white)
+	padding 24px
+	font-family 'Helvetica', 'Arial', sans-serif
+	h2
+		margin-bottom 16px
+	button
+		// width 300px
+		padding 8px 16px
+		margin-top 32px
+		border 2px solid var(--color-gray-n400)
+		border-radius 4px
+		font-size 1em
+		cursor pointer
+		outline none
+		&:hover 
+			background-color rgba(#FFF, .2)
+	footer 
+		position relative
+		// bottom 0
+		top 90%
+		// left 40px
+		background-color var(--color-white)
+	.beer-form
+		display flex
+		flex-flow column nowrap
+		margin 16px
+		.names
+			display flex
+			flex-flow row nowrap
+			justify-content space-around
+		.price-tag
+			display flex
+			flex-flow row nowrap
+		.stats
+			display flex
+			flex-flow row nowrap
+			flex-grow 1
+			input
+				width 64px
+
+		input
+			width 100%
+			margin 8px 8px 8px 0
+			padding 8px
+			border none
+			border-radius 2px
+			background-color var(--color-gray-n20)
+			&::placeholder
+				color var(--color-gray-n30)
