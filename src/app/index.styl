@@ -15,36 +15,47 @@
 .container
 	display grid
 	grid-template-columns repeat(5, 1fr)
-	grid-template-rows repeat(4, 1fr) 48px
+	grid-template-rows 48px repeat(4, 1fr)
 	grid-column-gap 1em
 	grid-row-gap 1em
 	// width 100vw
 	height 100vh
-	padding 2em
+	padding 1em 2em
 	background-color var(--color-black)
 
-.btn
+.tap-setup-btn
+	display flex
+	justify-content center
+	align-items center
 	width 50px
-	padding 4px
-	border 2px solid var(--color-gray-n400)
-	border-radius 4px
-	font-size 1.5em
+	height 100%
 	grid-column-start 5
 	grid-column-end 6
-	grid-row-start 5
-	grid-row-end 6
+	grid-row-start 1
+	grid-row-end 2
 	justify-self end
-	cursor pointer
+	border none
+	border-radius 4px
+	font-size 1.5em
+	// cursor pointer
 	outline none
 	color white
-	&:hover 
+	&:hover
 		background-color rgba(#FFF, .2)
+		.tap-icon
+			fill var(--color-gray-n30)
+	.tap-icon
+		fill var(--color-gray-n400)
 
 .brand
+	display flex
+	grid-column-start 1
+	grid-column-end 5
+	grid-row-start 1
+	grid-row-end 2
+	align-items center
 	text-align left
 	vertical-align center
+	font-size 2em
 	color var(--color-gray-n400)
 	font-family 'Helvetica', 'Arial', sans-serif
-
-.icon
-	fill var(--color-gray-n30)

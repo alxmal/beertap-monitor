@@ -5,12 +5,13 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "npm run build",
-		"build": "webpack -d && cp src/index.html dist/ && cp src/app/data.json dist/app/ && webpack-dev-server",
-		"build:prod": "webpack -p && cp src/index.html dist/ && cp src/app/data.json dist/app/"
+		"build": "webpack -d && cp src/index.html dist/ && webpack-dev-server",
+		"build:prod": "webpack -p && cp src/index.html dist/"
 	},
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"loader-utils": "^1.1.0",
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0",
 		"react-prop-types": "^0.4.0",
@@ -27,6 +28,7 @@
 		"extract-text-webpack-plugin": "^4.0.0-beta.0",
 		"file-loader": "^1.1.11",
 		"html-webpack-plugin": "^3.0.7",
+		"pascal-case": "^2.0.1",
 		"style-loader": "^0.20.3",
 		"stylus": "^0.54.5",
 		"stylus-loader": "^3.0.2",

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BeerForm from "./BeerForm";
+import CloseIcon from "../assets/icons/close.svg";
 import "../components/inventory.styl";
 
 class Inventory extends Component {
@@ -7,7 +8,10 @@ class Inventory extends Component {
 		const taps = this.props.taps;
 		return (
 			<div className="inventory">
-				<h2>Установка</h2>
+				<header>
+					<h2>Настройка кранов</h2>
+					<CloseIcon onClick={this.props.toggleInventory} className="close-icon" width="32" height="32"/>
+				</header>
 				{Object.keys(taps).map((key, i) => (
 					<BeerForm
 						key={key}

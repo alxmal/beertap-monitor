@@ -25,21 +25,23 @@
 
 // export default Icon;
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from "react";
 
 export default class Icon extends PureComponent {
-  render() {
-    const {className, glyph, ...restProps} = this.props;
+    render() {
+        const { className, glyph, ...restProps } = this.props;
 
-    return (
-      <svg className={className} {...restProps}>
-        <use xlinkHref={`#${glyph}`} />
-      </svg>
-    );
-  }
+        return (
+            <svg className={className} {...restProps}>
+                <use xlinkHref={`#${glyph}`} />
+            </svg>
+        );
+    }
 }
 
 Icon.defaultProps = {
-  glyph: '',
-  className: 'icon'
+    glyph: "",
+	className: "icon",
+	width: "24",
+	height: "24"
 };

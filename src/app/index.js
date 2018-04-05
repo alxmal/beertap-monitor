@@ -3,8 +3,7 @@ import { render } from "react-dom";
 import Transition from "react-transition-group/Transition";
 import BeerCard from "./components/BeerCard";
 import Inventory from "./components/Inventory";
-import Icon from "./components/Icon";
-import tapIcon from "./assets/icons/tap.svg";
+import TapIcon from "./assets/icons/tap.svg";
 import tapsDataInit from "./tapsDataInit";
 import "./index.styl";
 
@@ -12,12 +11,12 @@ const duration = 100;
 
 const defaultStyle = {
 	position: "absolute",
-	right: 0,
+	right: "0",
 	width: "40%",
 	height: "100%",
 	overflow: "scroll",
 	willChange: "opacity, transform",
-	transition: ".2s ease-in-out",
+	transition: ".3s ease",
 	transitionProperty: "opacity, transform",
 	opacity: 0
 };
@@ -25,15 +24,15 @@ const defaultStyle = {
 const transitionStyles = {
 	entering: {
 		opacity: 0,
-		// transform: "translateX(2%)"
+		transform: "translateX(-2%)"
 	},
 	entered: {
 		opacity: 1,
-		// transform: "translateX(0)"
+		transform: "translateX(0)"
 	},
 	exiting: {
 		opacity: 0,
-		// transform: "translateX(2%)"
+		transform: "translateX(-2%)"
 	}
 };
 
@@ -63,6 +62,10 @@ class App extends Component {
 		const isShown = this.state.showInventory;
 		return (
 			<div className="container">
+				<span className="brand">Сегодня на кранах</span>
+				<button className="tap-setup-btn" onClick={this.toggleInventory}>
+					<TapIcon className="tap-icon" width="48" height="48"/>
+				</button>
 				{Object.keys(taps).map((key, i) => (
 					<BeerCard
 						key={key}
@@ -71,10 +74,6 @@ class App extends Component {
 						tap={taps[key]}
 					/>
 				))}
-				<p className="brand">ЁD Taproom Menu Monitor v.1</p>
-				<button className="btn" onClick={this.toggleInventory}>
-					<Icon name='tap' className='tap-icon'/>
-				</button>
 				<Transition
 					in={this.state.showInventory}
 					timeout={duration}

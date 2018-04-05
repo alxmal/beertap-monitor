@@ -16,6 +16,11 @@ const stylusExtractor = new Extractor({
 	allChunks: true
 });
 
+const babelOptions = {
+	presets: ['react', 'es2015', 'stage-1'],
+	plugins: ['transform-object-rest-spread']
+};
+
 /* Config */
 const config = {
 	mode: "development",
@@ -33,10 +38,8 @@ const config = {
 				exclude: /(node_modules)/,
 				use: {
 					loader: "babel-loader",
-					options: {
-						presets: ["react", "es2015", "stage-1"]
+					options: babelOptions
 					}
-				}
 			},
 			{
 				test: /\.styl?$/,
@@ -77,21 +80,25 @@ const config = {
 				test: /\.svg$/,
 				use: [
 					{
+						loader: 'babel-loader',
+						options: babelOptions
+					},
+					{
 						loader: "svg-sprite-loader",
 						options: {
-							runtimeGenerator: require.resolve('./svg-to-icon-generator'),
+							runtimeGenerator: require.resolve(
+								SRC + "/app/svg-to-icon-generator.js"
+							),
 							runtimeOptions: {
-							  iconModule: './Icon.js' // Relative to current build context folder
+								iconModule: SRC + "/app/components/Icon.js" // Relative to current build context folder
 							}
 						}
 					}
-				],
+				]
 			}
 		]
 	},
-	plugins: [
-		stylusExtractor
-	],
+	plugins: [stylusExtractor],
 	devtool: "inline-source-map",
 	devServer: {
 		port: PORT,

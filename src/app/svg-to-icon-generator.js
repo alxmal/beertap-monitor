@@ -1,7 +1,7 @@
 const path = require('path');
 const pascalCase = require('pascal-case');
 const { stringifyRequest } = require('loader-utils');
-const { stringifySymbol, stringify } = require('../../lib/utils');
+const { stringifySymbol, stringify } = require('svg-sprite-loader/lib/utils');
 
 module.exports = function runtimeGenerator({ symbol, config, context, loaderContext }) {
   const { spriteModule, symbolModule, runtimeOptions } = config;
