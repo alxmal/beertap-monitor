@@ -8,71 +8,24 @@
 	--color-gray-n20 #DFE1E6
 	--color-gray-n30 #B3BAC5
 	--color-gray-n400 #505F79
+	--color-gray-n500 #42526E
 	--color-gray-n700 #253858
 
 /* App */
 .container
 	display grid
 	grid-template-columns repeat(5, 1fr)
-	grid-template-rows repeat(4, 1fr) 50px
+	grid-template-rows repeat(4, 1fr) 48px
 	grid-column-gap 1em
 	grid-row-gap 1em
-	width 100vw
+	// width 100vw
 	height 100vh
 	padding 2em
 	background-color var(--color-black)
 
-.inventory
-	font-family 'Helvetica', 'Arial', sans-serif
-	display flex
-	flex-flow column nowrap
-	background-color var(--color-white)
-	padding 24px
-	h2
-		margin-bottom 16px
-	button
-		// width 300px
-		padding 8px 16px
-		margin-top 32px
-		border 2px solid var(--color-gray-n400)
-		border-radius 4px
-		font-size 1em
-		cursor pointer
-		outline none
-		&:hover 
-			background-color rgba(#FFF, .2)
-	.beer-form
-		display flex
-		flex-flow column nowrap
-		margin 16px
-		.names
-			display flex
-			flex-flow row nowrap
-			justify-content space-around
-		.price-tag
-			display flex
-			flex-flow row nowrap
-		.stats
-			display flex
-			flex-flow row nowrap
-			flex-grow 1
-			input
-				width 64px
-
-		input
-			width 100%
-			margin 8px 8px 8px 0
-			padding 8px
-			border none
-			border-radius 2px
-			background-color var(--color-gray-n20)
-			&::placeholder
-				color var(--color-gray-n30)
-
-
 .btn
 	width 50px
-	color white
+	padding 4px
 	border 2px solid var(--color-gray-n400)
 	border-radius 4px
 	font-size 1.5em
@@ -83,5 +36,15 @@
 	justify-self end
 	cursor pointer
 	outline none
+	color white
 	&:hover 
 		background-color rgba(#FFF, .2)
+
+.brand
+	text-align left
+	vertical-align center
+	color var(--color-gray-n400)
+	font-family 'Helvetica', 'Arial', sans-serif
+
+.icon
+	fill var(--color-gray-n30)
