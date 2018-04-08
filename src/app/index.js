@@ -7,6 +7,7 @@ import TapIcon from "./assets/icons/tap.svg";
 import tapsDataInit from "./tapsDataInit";
 import "./index.styl";
 
+const tapsData = JSON.parse(localStorage.getItem('tapsList')) || tapsDataInit;
 const duration = 100;
 
 const defaultStyle = {
@@ -41,7 +42,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			showInventory: false,
-			taps: { ...tapsDataInit }
+			taps: { ...tapsData }
 		};
 	}
 
@@ -55,6 +56,7 @@ class App extends Component {
 		const taps = { ...this.state.taps };
 		taps[key] = updatedTap;
 		this.setState({ taps: taps });
+		localStorage.setItem('tapsList', JSON.stringify(taps));
 	};
 
 	render() {
