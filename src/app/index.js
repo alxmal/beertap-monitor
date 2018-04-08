@@ -15,7 +15,8 @@ const defaultStyle = {
 	right: '0',
 	width: '40%',
 	height: '100%',
-	overflow: 'scroll',
+	overflowY: 'scroll',
+	overflowX: 'hidden',
 	willChange: 'opacity, transform',
 	transition: '.3s ease',
 	transitionProperty: 'opacity, transform',
@@ -46,6 +47,42 @@ class App extends Component {
 		};
 	}
 
+	onKeyDownHandler = e => {
+		if (e.keyCode === 77) {
+			this.setState({
+				showInventory: !this.state.showInventory
+			});
+		}
+	};
+
+	fullScreenToggle = e => {
+		if (e.keyCode === 70) {
+			if (
+				(document.fullScreenElement &&
+					document.fullScreenElement !== null) ||
+				(!document.mozFullScreen && !document.webkitIsFullScreen)
+			) {
+				if (document.documentElement.requestFullScreen) {
+					document.documentElement.requestFullScreen();
+				} else if (document.documentElement.mozRequestFullScreen) {
+					document.documentElement.mozRequestFullScreen();
+				} else if (document.documentElement.webkitRequestFullScreen) {
+					document.documentElement.webkitRequestFullScreen(
+						Element.ALLOW_KEYBOARD_INPUT
+					);
+				}
+			} else {
+				if (document.cancelFullScreen) {
+					document.cancelFullScreen();
+				} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				} else if (document.webkitCancelFullScreen) {
+					document.webkitCancelFullScreen();
+				}
+			}
+		}
+	};
+
 	toggleInventory = () => {
 		this.setState({
 			showInventory: !this.state.showInventory
@@ -59,30 +96,29 @@ class App extends Component {
 		localStorage.setItem('tapsList', JSON.stringify(taps));
 	};
 
+	componentWillMount() {
+		document.addEventListener('keydown', this.onKeyDownHandler);
+		document.addEventListener('keydown', this.fullScreenToggle);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('keydown', this.onKeyDownHandler);
+		document.removeEventListener('keydown', this.fullScreenToggle);
+	}
+
 	render() {
 		const { taps } = this.state;
 		const isShown = this.state.showInventory;
 		return (
-			<div className="container">
-				<div className="display-header">
-					<span className="brand">Сегодня на кранах</span>
-					<button
-						className="tap-setup-btn"
-						onClick={this.toggleInventory}
-					>
-						<TapIcon className="tap-icon" width="48" height="48" />
-					</button>
-				</div>
-				<div className="display">
-					{Object.keys(taps).map((key, i) => (
-						<BeerCard
-							key={key}
-							index={key}
-							tapNumber={i + 1}
-							tap={taps[key]}
-						/>
-					))}
-				</div>
+			<div className="display">
+				{Object.keys(taps).map((key, i) => (
+					<BeerCard
+						key={key}
+						index={key}
+						tapNumber={i + 1}
+						tap={taps[key]}
+					/>
+				))}
 				<Transition
 					in={this.state.showInventory}
 					timeout={duration}
