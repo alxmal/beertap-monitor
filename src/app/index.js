@@ -20,7 +20,8 @@ const defaultStyle = {
 	willChange: 'opacity, transform',
 	transition: '.3s ease',
 	transitionProperty: 'opacity, transform',
-	opacity: 0
+	opacity: 0,
+	boxShadow: '-4px 0 16px -2px rgba(0, 0, 0, 0, .5)'
 };
 
 const transitionStyles = {
@@ -48,7 +49,7 @@ class App extends Component {
 	}
 
 	onKeyDownHandler = e => {
-		if (e.keyCode === 77) {
+		if (e.ctrlKey && e.which === 77) {
 			this.setState({
 				showInventory: !this.state.showInventory
 			});
@@ -56,7 +57,7 @@ class App extends Component {
 	};
 
 	fullScreenToggle = e => {
-		if (e.keyCode === 70) {
+		if (e.ctrlKey && e.which === 70) {
 			if (
 				(document.fullScreenElement &&
 					document.fullScreenElement !== null) ||
