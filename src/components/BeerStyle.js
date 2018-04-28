@@ -11,7 +11,7 @@ const BeerStyle = props => {
 			break;
 		case 'ipa':
 		case 'double ipa':
-		case 'black ips':
+		case 'black ipa':
 		case 'vermont ipa':
 			tagColor = '#FFC400';
 			break;

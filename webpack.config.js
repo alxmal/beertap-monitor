@@ -29,7 +29,7 @@ const config = {
 	output: {
 		path: DIST + '/',
 		filename: 'bundle.js',
-		publicPath: '/'
+		publicPath: './'
 	},
 	module: {
 		rules: [

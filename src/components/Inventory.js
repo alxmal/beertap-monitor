@@ -5,21 +5,15 @@ import '../components/inventory.styl';
 
 class Inventory extends Component {
 	render() {
-		console.log(closeIcon.url);
 		const taps = this.props.taps;
 		return (
 			<div className="inventory">
 				<header>
 					<h2>Настройка кранов</h2>
-					{/* <CloseIcon onClick={this.props.toggleInventory} className="close-icon" width="32" height="32"/> */}
-					{/* <span className="closeIcon">${usage}</span> */}
-					<svg
-						viewBox={closeIcon.viewBox}
-						width={closeIcon.width}
-						height={closeIcon.height}
-					>
-						<use xlinkHref={closeIcon.url} />
-					</svg>
+					<span
+						onClick={this.props.toggleInventory}
+						className="close-icon"
+					/>
 				</header>
 				{Object.keys(taps).map((key, i) => (
 					<BeerForm
@@ -31,7 +25,9 @@ class Inventory extends Component {
 					/>
 				))}
 				<footer>
-					<button onClick={this.props.toggleInventory}>Сохранить</button>
+					<button onClick={this.props.toggleInventory}>
+						Сохранить
+					</button>
 				</footer>
 			</div>
 		);
