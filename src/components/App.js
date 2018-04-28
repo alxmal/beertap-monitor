@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import Transition from 'react-transition-group/Transition';
 import BeerCard from './BeerCard';
 import Inventory from './Inventory';
-import TapIcon from '../assets/icons/tap.svg';
 import tapsDataInit from '../tapsDataInit';
 
 const tapsData = JSON.parse(localStorage.getItem('tapsList')) || tapsDataInit;
@@ -58,8 +57,7 @@ class App extends Component {
 	fullScreenToggle = e => {
 		if (e.ctrlKey && e.which === 70) {
 			if (
-				(document.fullScreenElement &&
-					document.fullScreenElement !== null) ||
+				(document.fullScreenElement && document.fullScreenElement !== null) ||
 				(!document.mozFullScreen && !document.webkitIsFullScreen)
 			) {
 				if (document.documentElement.requestFullScreen) {
@@ -116,12 +114,7 @@ class App extends Component {
 		return (
 			<div className="display">
 				{Object.keys(taps).map((key, i) => (
-					<BeerCard
-						key={key}
-						index={key}
-						tapNumber={i + 1}
-						tap={taps[key]}
-					/>
+					<BeerCard key={key} index={key} tapNumber={i + 1} tap={taps[key]} />
 				))}
 				<Transition
 					in={this.state.showInventory}

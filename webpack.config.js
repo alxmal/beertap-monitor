@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const Templater = require('html-webpack-plugin');
 const Extractor = require('extract-text-webpack-plugin');
-// const Sprite = require("svg-sprite-loader/lib/plugin");
+const Sprite = require('svg-sprite-loader/lib/plugin');
 
 const PORT = process.env.PORT || 3000;
 const DIST = path.resolve(__dirname, 'dist');
@@ -29,7 +29,7 @@ const config = {
 	output: {
 		path: DIST + '/',
 		filename: 'bundle.js',
-		publicPath: './'
+		publicPath: '/'
 	},
 	module: {
 		rules: [
@@ -80,25 +80,37 @@ const config = {
 				test: /\.svg$/,
 				use: [
 					{
-						loader: 'babel-loader',
-						options: babelOptions
-					},
-					{
 						loader: 'svg-sprite-loader',
 						options: {
-							runtimeGenerator: require.resolve(
-								SRC + '/svg-to-icon-generator.js'
-							),
-							runtimeOptions: {
-								iconModule: SRC + '/components/Icon.js' // Relative to current build context folder
-							}
+							extract: true,
+							spriteFilename: 'sprite-[hash:6].svg'
 						}
 					}
 				]
 			}
+			// {
+			// 	test: /\.svg$/,
+			// 	use: [
+			// 		{
+			// 			loader: 'babel-loader',
+			// 			options: babelOptions
+			// 		},
+			// 		{
+			// 			loader: 'svg-sprite-loader',
+			// 			options: {
+			// 				runtimeGenerator: require.resolve(
+			// 					SRC + '/svg-to-icon-generator.js'
+			// 				),
+			// 				runtimeOptions: {
+			// 					iconModule: SRC + '/components/Icon.js' // Relative to current build context folder
+			// 				}
+			// 			}
+			// 		}
+			// 	]
+			// }
 		]
 	},
-	plugins: [stylusExtractor],
+	plugins: [stylusExtractor, new Sprite()],
 	devtool: 'inline-source-map',
 	devServer: {
 		port: PORT,
