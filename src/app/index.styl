@@ -16,6 +16,11 @@
 /* App */
 body
 	background-color var(--color-black)
+	background-image url(http://stylus-lang.com/img/stylus-logo.svg)
+	background-position center
+	background-size 200px
+
+
 
 .display
 	height 100vh
@@ -26,4 +31,15 @@ body
 	grid-template-rows repeat(10, 1fr)
 	grid-column-gap 4px
 	grid-row-gap 4px
+
+.screen-enter
+	opacity 0
+	transform scale(.985)
+
+.screen-enter-active
+	opacity 1
+	transform scale(1)
+	transition opacity 2s, transform .3s ease-out
+
+
 

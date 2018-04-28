@@ -3,7 +3,6 @@ import React from 'react';
 const BeerStyle = props => {
 	const style = props.beerstyle.toLowerCase();
 	let tagColor = '';
-	console.log(style);
 
 	switch (style) {
 		case 'stout':
