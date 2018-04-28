@@ -1,17 +1,17 @@
 /* Modules */
-const webpack = require("webpack");
-const path = require("path");
-const Templater = require("html-webpack-plugin");
-const Extractor = require("extract-text-webpack-plugin");
+const webpack = require('webpack');
+const path = require('path');
+const Templater = require('html-webpack-plugin');
+const Extractor = require('extract-text-webpack-plugin');
 // const Sprite = require("svg-sprite-loader/lib/plugin");
 
 const PORT = process.env.PORT || 3000;
-const DIST = path.resolve(__dirname, "dist");
-const SRC = path.resolve(__dirname, "src");
+const DIST = path.resolve(__dirname, 'dist');
+const SRC = path.resolve(__dirname, 'src');
 
 /* Helpers */
 const stylusExtractor = new Extractor({
-	filename: "index.css",
+	filename: 'index.css',
 	disable: false,
 	allChunks: true
 });
@@ -23,13 +23,13 @@ const babelOptions = {
 
 /* Config */
 const config = {
-	mode: "development",
+	mode: 'development',
 	cache: false,
-	entry: SRC + "/app/index.js",
+	entry: SRC + '/index.js',
 	output: {
-		path: DIST + "/app",
-		filename: "bundle.js",
-		publicPath: "/app/"
+		path: DIST + '/',
+		filename: 'bundle.js',
+		publicPath: './'
 	},
 	module: {
 		rules: [
@@ -37,17 +37,17 @@ const config = {
 				test: /\.(js|jsx)?$/,
 				exclude: /(node_modules)/,
 				use: {
-					loader: "babel-loader",
+					loader: 'babel-loader',
 					options: babelOptions
-					}
+				}
 			},
 			{
 				test: /\.styl?$/,
 				use: stylusExtractor.extract({
-					fallback: "style-loader",
+					fallback: 'style-loader',
 					use: [
 						{
-							loader: "css-loader",
+							loader: 'css-loader',
 							options: {
 								camelCase: true,
 								minimize: true,
@@ -55,10 +55,10 @@ const config = {
 							}
 						},
 						{
-							loader: "stylus-loader",
+							loader: 'stylus-loader',
 							options: {
 								sourceMap: true,
-								preferPathResolver: "webpack"
+								preferPathResolver: 'webpack'
 							}
 						}
 					]
@@ -68,10 +68,10 @@ const config = {
 				test: /\.(eot|ttf|woff|woff2)?$/,
 				use: [
 					{
-						loader: "file-loader",
+						loader: 'file-loader',
 						options: {
-							name: "[name].[ext]",
-							publicPath: "/app/"
+							name: '[name].[ext]',
+							publicPath: '/'
 						}
 					}
 				]
@@ -84,13 +84,13 @@ const config = {
 						options: babelOptions
 					},
 					{
-						loader: "svg-sprite-loader",
+						loader: 'svg-sprite-loader',
 						options: {
 							runtimeGenerator: require.resolve(
-								SRC + "/app/svg-to-icon-generator.js"
+								SRC + '/svg-to-icon-generator.js'
 							),
 							runtimeOptions: {
-								iconModule: SRC + "/app/components/Icon.js" // Relative to current build context folder
+								iconModule: SRC + '/components/Icon.js' // Relative to current build context folder
 							}
 						}
 					}
@@ -99,13 +99,13 @@ const config = {
 		]
 	},
 	plugins: [stylusExtractor],
-	devtool: "inline-source-map",
+	devtool: 'inline-source-map',
 	devServer: {
 		port: PORT,
 		historyApiFallback: true,
 		open: true,
 		contentBase: SRC,
-		publicPath: "/app/"
+		publicPath: '/'
 	}
 };
 
